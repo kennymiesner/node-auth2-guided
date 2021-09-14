@@ -10,8 +10,10 @@ module.exports = function (user) {
   const options = {
     expiresIn: '1d'
   }
-
   const token = jwt.sign(
-    
+    payload,
+    JWT_SECRET,
+    options,
   )
+  return token
 }

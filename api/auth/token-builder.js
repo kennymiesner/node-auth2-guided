@@ -3,6 +3,7 @@ const { JWT_SECRET } = require('../../config')
 
 module.exports = function (user) {
   const payload = {
-    subject
+    subject: user.id,
+    username: user.username,
   }
 }

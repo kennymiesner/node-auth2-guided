@@ -14,7 +14,8 @@ module.exports = (req, res, next) => {
       if (err) return next({
         status: 401, message: 'token bad!', realErrorMessage: err.message,
       })
-      req.
+      req.decodedJwt = decoded
+      next()
     }
   )
 };

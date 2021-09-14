@@ -27,7 +27,7 @@ router.post('/login', (req, res, next) => {
   Users.findBy({ username }) // it would be nice to have middleware do this
     .then(([user]) => {
       if (user && bcrypt.compareSync(password, user.password)) {
-        // give something back
+        // give something back (the token)
         // that is just as good as valid credentials
         res.status(200).json({
           message: `Welcome back ${user.username}!`,

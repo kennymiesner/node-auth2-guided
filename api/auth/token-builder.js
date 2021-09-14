@@ -5,5 +5,6 @@ module.exports = function (user) {
   const payload = {
     subject: user.id,
     username: user.username,
+    role: user.role,
   }
 }

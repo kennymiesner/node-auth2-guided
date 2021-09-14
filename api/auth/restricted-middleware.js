@@ -10,6 +10,8 @@ module.exports = (req, res, next) => {
   jwt.verify(
     token,
     JWT_SECRET,
-    
+    (err, decoded) => {
+      
+    }
   )
 };

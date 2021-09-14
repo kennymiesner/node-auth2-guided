@@ -7,4 +7,11 @@ module.exports = function (user) {
     username: user.username,
     role: user.role,
   }
+  const options = {
+    expiresIn: '1d'
+  }
+
+  const token = jwt.sign(
+    
+  )
 }

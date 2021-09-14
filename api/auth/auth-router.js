@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const tokenBuilder = 
+const tokenBuilder = require('./token-builder');
 const router = require('express').Router();
 
 const Users = require('../users/users-model.js');
@@ -29,6 +29,7 @@ router.post('/login', (req, res, next) => {
       if (user && bcrypt.compareSync(password, user.password)) {
         // give something back (the token)
         // that is just as good as valid credentials
+        const token = tokenBuilder(user)
         res.status(200).json({
           message: `Welcome back ${user.username}!`,
         });

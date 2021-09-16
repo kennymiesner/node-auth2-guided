@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-
+const tokenBuilder = require('./token-builder');
 const router = require('express').Router();
 
 const Users = require('../users/users-model.js');
@@ -27,8 +27,12 @@ router.post('/login', (req, res, next) => {
   Users.findBy({ username }) // it would be nice to have middleware do this
     .then(([user]) => {
       if (user && bcrypt.compareSync(password, user.password)) {
+        // give something back (the token)
+        // that is just as good as valid credentials
+        const token = tokenBuilder(user)
         res.status(200).json({
           message: `Welcome back ${user.username}!`,
+          token,
         });
       } else {
         next({ status: 401, message: 'Invalid Credentials' });
